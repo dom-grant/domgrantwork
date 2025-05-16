@@ -1,0 +1,8 @@
+html {
+    background-color: #00ff00; /* Overscroll (bounce) background color */
+  }
+  
+  body {
+    margin: 0;
+    background-color: white; /* Main page background */
+  }
