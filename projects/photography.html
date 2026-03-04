@@ -1,0 +1,101 @@
+<head>
+    <title>Photography</title>
+    <link rel="icon" type="image/x-icon" href="/images/green.png">
+</head>
+
+
+<style>
+    .slide {
+      display: none;
+    }
+  
+    .slide.active {
+      display: block;
+    }
+  
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+  
+    .caption {
+      margin: 6px 0 12px 0;
+    }
+  
+    p {
+      margin: 10px 0;
+    }
+  </style>
+  
+
+<p>
+    <a href="/index.html">Back</a>
+</p>
+
+<body>
+
+<div id="gallery"></div>
+
+<p>
+  <a href="#" id="prev">Prev</a>
+  <a href="#" id="next">Next</a>
+</p>
+
+<script>
+  const totalImages = 3;
+
+  const captions = [
+    "On the road to Bryce Canyon, 2026",
+    "Sunrise near the Grand Canyon, 2026",
+    "Sunrsie near the Grand Canyon, 2026"
+  ];
+
+  const path = "images/projects/photography/";
+  const prefix = "photography-";
+  const extension = ".jpg";
+
+  const gallery = document.getElementById("gallery");
+
+  let slides = [];
+  let current = 0;
+
+  for (let i = 1; i <= totalImages; i++) {
+    const slide = document.createElement("div");
+    slide.className = "slide";
+    if (i === 1) slide.classList.add("active");
+
+    const img = document.createElement("img");
+    img.src = path + prefix + i + extension;
+    img.alt = captions[i - 1] || "";
+
+    const caption = document.createElement("div");
+    caption.className = "caption";
+    caption.textContent = captions[i - 1] || "";
+
+    slide.appendChild(img);
+    slide.appendChild(caption);
+    gallery.appendChild(slide);
+
+    slides.push(slide);
+  }
+
+  function showSlide(index) {
+    slides[current].classList.remove("active");
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add("active");
+  }
+
+  document.getElementById("prev").addEventListener("click", function(e) {
+    e.preventDefault();
+    showSlide(current - 1);
+  });
+
+  document.getElementById("next").addEventListener("click", function(e) {
+    e.preventDefault();
+    showSlide(current + 1);
+  });
+</script>
+
+</body>
+</html>
