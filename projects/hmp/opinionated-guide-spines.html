@@ -11,7 +11,17 @@
     Opinionated Guides
 </h1>
 
-<div class="books" id="books"></div>
+<p>
+    <i>2024-2026<br>
+    Cover Design, Production Design.<br>
+    With <a href="https://www.hoxtonminipress.com" target="_blank">Hoxton Mini Press</a>.
+    <br>
+    </i>
+</p>
+
+<div class="books-container">
+    <div class="books" id="books"></div>
+</div>
 
 <div class="content" id="content">
 
@@ -25,15 +35,22 @@
 
 <style>
 
+.books-container {
+    overflow-x: auto;
+    margin-top: 40px;
+}
+
 .books {
     display: flex;
     align-items: flex-end;
     height: 304px;
+    width: max-content;
 }
 
 .book {
     width: 30px;
     height: 304px;
+    flex-shrink: 0;
     transition: width 0.2s, height 0.2s;
     cursor: pointer;
     overflow: hidden;
@@ -71,8 +88,8 @@ const books = [
 
     {
         folder: "active-london",
-        title: "Active London",
-        description: "A guide to active things to do across London.",
+        title: "An Opinionated Guide to Active London",
+        description: "<i>2024</i>",
         images: [
             "active-london-1.webp",
             "active-london-2.webp",
@@ -82,8 +99,8 @@ const books = [
 
     {
         folder: "calm-london",
-        title: "Calm London",
-        description: "A guide to peaceful places and ways to slow down in London.",
+        title: "An Opinionated Guide to Calm London",
+        description: "<i>2024<br>Written by Christina Rose Brown.</i>",
         images: [
             "calm-london-1.webp",
             "calm-london-2.webp",
@@ -93,8 +110,8 @@ const books = [
 
     {
         folder: "london-markets",
-        title: "London Markets",
-        description: "A guide to some of London's best markets.",
+        title: "An Opinionated Guide to London Markets",
+        description: "<i>2024</i>",
         images: [
             "london-markets-1.webp",
             "london-markets-2.webp",
@@ -104,8 +121,8 @@ const books = [
 
     {
         folder: "secret-london",
-        title: "Secret London",
-        description: "A guide to some of London's lesser-known places and hidden corners.",
+        title: "An Opinionated Guide to Secret London",
+        description: "<i>2024</i>",
         images: [
             "secret-london-1.webp",
             "secret-london-2.webp",
@@ -115,8 +132,8 @@ const books = [
 
     {
         folder: "swim-london",
-        title: "Swim London",
-        description: "A guide to swimming in and around London.",
+        title: "An Opinionated Guide to Swim London",
+        description: "<i>2024</i>",
         images: [
             "swim-london-1.webp",
             "swim-london-2.webp",
@@ -171,7 +188,7 @@ function showBook(book, spine) {
 
     document.getElementById("title").textContent = book.title;
 
-    document.getElementById("description").textContent = book.description;
+    document.getElementById("description").innerHTML = book.description;
 
     const imagesContainer = document.getElementById("images");
 
