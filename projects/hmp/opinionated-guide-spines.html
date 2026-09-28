@@ -2,15 +2,40 @@
 <html>
 
 <head>
+    <title>Opinionated Guides</title>
+    <link rel="icon" type="image/x-icon" href="/images/green.png">
+</head>
 
-<title>Opinionated Guides</title>
+<p>
+    <a href="/index.html">Back</a>
+</p>
+
+<h1>
+    Opinionated Guides
+</h1>
+
+<div class="books" id="books"></div>
+
+<div class="content" id="content">
+
+    <h1 id="title"></h1>
+
+    <p id="description"></p>
+
+    <div id="images"></div>
+
+</div>
 
 <style>
+
+body {
+    margin: 8px;
+}
 
 .books {
     display: flex;
     align-items: flex-end;
-    height: 335px;
+    height: 304px;
 }
 
 .book {
@@ -47,51 +72,10 @@
 
 </style>
 
-</head>
-
-<body>
-
-<p>
-    <a href="/index.html">Back</a>
-</p>
-
-<h1>Opinionated Guides</h1>
-
-<p>
-    <i>2024-2026</i>
-    <br>
-    While at Hoxton Mini Press I have worked on several of the best-selling Opinionated Guides series.
-</p>
-    
-
-<div class="books" id="books"></div>
-
-<div class="content" id="content">
-
-    <h1 id="title"></h1>
-
-    <p id="description"></p>
-
-    <div id="images"></div>
-
-</div>
-
 <script>
 
 const books = [
 
-
-    {
-        folder: "secret-london",
-        title: "Secret London",
-        description: "A guide to some of London's lesser-known places and hidden corners.",
-        images: [
-            "secret-london-1.webp",
-            "secret-london-2.webp",
-            "secret-london-3.webp"
-        ]
-    },
-    
     {
         folder: "active-london",
         title: "Active London",
@@ -122,6 +106,17 @@ const books = [
             "london-markets-1.webp",
             "london-markets-2.webp",
             "london-markets-3.webp"
+        ]
+    },
+
+    {
+        folder: "secret-london",
+        title: "Secret London",
+        description: "A guide to some of London's lesser-known places and hidden corners.",
+        images: [
+            "secret-london-1.webp",
+            "secret-london-2.webp",
+            "secret-london-3.webp"
         ]
     },
 
@@ -238,7 +233,3 @@ document.addEventListener("click", function(event) {
 });
 
 </script>
-
-</body>
-
-</html>
