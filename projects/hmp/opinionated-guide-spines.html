@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Opinionated Guides</title>
+
 <style>
 
 .books {
@@ -40,3 +47,191 @@
 }
 
 </style>
+
+</head>
+
+<body>
+
+<p>
+    <a href="/index.html">Back</a>
+</p>
+
+<h1>Opinionated Guides</h1>
+
+<div class="books" id="books"></div>
+
+<div class="content" id="content">
+
+    <h1 id="title"></h1>
+
+    <p id="description"></p>
+
+    <div id="images"></div>
+
+</div>
+
+<script>
+
+const books = [
+
+    {
+        folder: "active-london",
+        title: "Active London",
+        description: "A guide to active things to do across London.",
+        images: [
+            "active-london-1.webp",
+            "active-london-2.webp",
+            "active-london-3.webp"
+        ]
+    },
+
+    {
+        folder: "calm-london",
+        title: "Calm London",
+        description: "A guide to peaceful places and ways to slow down in London.",
+        images: [
+            "calm-london-1.webp",
+            "calm-london-2.webp",
+            "calm-london-3.webp"
+        ]
+    },
+
+    {
+        folder: "london-markets",
+        title: "London Markets",
+        description: "A guide to some of London's best markets.",
+        images: [
+            "london-markets-1.webp",
+            "london-markets-2.webp",
+            "london-markets-3.webp"
+        ]
+    },
+
+    {
+        folder: "secret-london",
+        title: "Secret London",
+        description: "A guide to some of London's lesser-known places and hidden corners.",
+        images: [
+            "secret-london-1.webp",
+            "secret-london-2.webp",
+            "secret-london-3.webp"
+        ]
+    },
+
+    {
+        folder: "swim-london",
+        title: "Swim London",
+        description: "A guide to swimming in and around London.",
+        images: [
+            "swim-london-1.webp",
+            "swim-london-2.webp",
+            "swim-london-3.webp"
+        ]
+    }
+
+];
+
+const booksContainer = document.getElementById("books");
+
+books.forEach(function(book) {
+
+    const spine = document.createElement("div");
+
+    spine.className = "book";
+
+    const image = document.createElement("img");
+
+    image.src =
+        "/images/projects/hmp/opinionated-guides/" +
+        book.folder +
+        "/" +
+        book.folder +
+        "-spine.webp";
+
+    image.alt = book.title;
+
+    spine.appendChild(image);
+
+    spine.addEventListener("click", function(event) {
+
+        event.stopPropagation();
+
+        showBook(book, spine);
+
+    });
+
+    booksContainer.appendChild(spine);
+
+});
+
+function showBook(book, spine) {
+
+    document.querySelectorAll(".book").forEach(function(bookElement) {
+
+        bookElement.classList.remove("selected");
+
+    });
+
+    spine.classList.add("selected");
+
+    document.getElementById("content").style.display = "block";
+
+    document.getElementById("title").textContent = book.title;
+
+    document.getElementById("description").textContent = book.description;
+
+    const imagesContainer = document.getElementById("images");
+
+    imagesContainer.innerHTML = "";
+
+    book.images.forEach(function(filename) {
+
+        const path =
+            "/images/projects/hmp/opinionated-guides/" +
+            book.folder +
+            "/" +
+            filename;
+
+        const link = document.createElement("a");
+
+        link.href = path;
+
+        const image = document.createElement("img");
+
+        image.src = path;
+
+        image.alt = book.title;
+
+        link.appendChild(image);
+
+        imagesContainer.appendChild(link);
+
+    });
+
+}
+
+document.addEventListener("click", function(event) {
+
+    if (
+        !event.target.closest(".book") &&
+        !event.target.closest(".content") &&
+        !event.target.closest("a")
+    ) {
+
+        document.querySelectorAll(".book").forEach(function(book) {
+
+            book.classList.remove("selected");
+
+        });
+
+        document.getElementById("content").style.display = "none";
+
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
